@@ -67,7 +67,7 @@
     <Compile Include="Assets\Scripts\Bots\BotBehaviour.cs" />
     <Compile Include="Assets\Scripts\Bots\BotType.cs" />
     <Compile Include="Assets\Scripts\Bots\EnemyBot.cs" />
-    <Compile Include="Assets\Scripts\Bots\EnemyRocketBot.cs" />
+    <Compile Include="Assets\Scripts\Bots\HelperBot.cs" />
     <Compile Include="Assets\Scripts\Bots\PlayerBot.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Custom\RPhysics.cs" />
