@@ -2,22 +2,21 @@
 
 public class CameraController : MonoBehaviour {
 
-    //TODO zorg ervoor dat niet alles public is.. heh
-    public Camera myCamera;
-    public Transform camTransform;
-    public Transform pivot;
-    public Transform character;
+    private Camera myCamera;
+    private Transform camTransform;
+    private Transform pivot;
+    private Transform model;
 
     public float offset = -6.5F;
     public float camFollow = 8;
 
-    public LayerMask mask;
+    private LayerMask mask;
 
     void Start() {
         pivot = transform;
         myCamera = Camera.main;
         camTransform = myCamera.transform;
-        character = transform.parent.transform;
+        model = transform.parent.transform;
         camTransform.position = pivot.TransformPoint(Vector3.forward * offset);
         mask = 1 << LayerMask.NameToLayer("Clip") | 0 << LayerMask.NameToLayer("NonClip");
     }
