@@ -6,16 +6,25 @@ public class PlayerBot : BotBehaviour {
 
     public static PlayerBot localPlayerBot;
 
+    public Image sprType;
+    public Sprite[] typeSprites;
     public Slider powerBar;
     public Image powerBarFill;
     public Transform shootHandPoint;
     private bool grabbing;
+    private bool shocking;
     private bool flying;
     private int jetpackFuel = FRAMES_JETPACK_FLY;
 
+    private int viewIndex = 0;
+    public Vector3[] localViewPosition;
+    public Vector3[] localViewRotation;
+    public Transform pivotPoint;
+
     public static readonly int FRAMES_UNTIL_GRAB = 30,
                                FRAMES_UNTIL_SHOT = 30,
-                               FRAMES_JETPACK_FLY = 120;
+                               FRAMES_JETPACK_FLY = 120,
+                               FRAMES_UNTIL_SHOCK = 30;
 
     private Vector3 moveDirection;
 
@@ -43,22 +52,11 @@ public class PlayerBot : BotBehaviour {
     void Update() {
         animator.SetBool("walking", false);
 
-        if (grabbing) return;
+        if (grabbing || shocking) return;
 
-        // I'm sorry
+        // Jetpack stuff
         if (getBotType() == BotType.JETPACK) {
-            if (flying) {
-                if (InputManager.ActionHold) {
-                    jetpackFly();
-                }
-                else {
-                    stopJetpack();
-                }
-            }else {
-                if (jetpackFuel < FRAMES_JETPACK_FLY)
-                    jetpackFuel++;
-                powerBar.value = jetpackFuel * 1F / FRAMES_JETPACK_FLY;
-            }
+            handleJetpack();
         }
 
         handleInput();
@@ -68,17 +66,22 @@ public class PlayerBot : BotBehaviour {
         // roteer model horizontaal
         modelTransform.Rotate(transform.up * rotationSpeed * Input.GetAxis("Horizontal"));
 
-        if (Input.GetKey(KeyCode.UpArrow)) {      // beweeg naar voren
+        if (InputManager.Forward) {      // beweeg naar voren
             RPhysics.Move(transform, modelTransform.forward, moveSpeed);
             animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.DownArrow)) {    // beweeg naar achteren
+        else if (InputManager.Back) {    // beweeg naar achteren
             RPhysics.Move(transform, -modelTransform.forward, moveSpeed);
             animator.SetBool("walking", true);
         }
 
+        // Action
         if (InputManager.Action)
             performAction();
+
+        // Changing views
+        if (InputManager.ChangeView)
+            changeView();
     }
 
     private void performAction() {
@@ -88,12 +91,25 @@ public class PlayerBot : BotBehaviour {
             case BotType.NORMAL: startGrab(); break;
             case BotType.ROCKET: startRocket(); break;
             case BotType.JETPACK: startJetpack(); break;
+            case BotType.SHOCK: startShock(); break;
+            case BotType.MINI: startGrab(); break;
         }
+    }
+
+    private void changeView() {
+        viewIndex++;
+        if (viewIndex >= localViewPosition.Length) viewIndex = 0; // < Stay within the boundaries
+        
+        // and set the new local pos and rotation
+        pivotPoint.localPosition    = localViewPosition[viewIndex];
+        pivotPoint.localEulerAngles = localViewRotation[viewIndex];
     }
 
     #region grabbing
     private void startGrab() {
-        modelTransform.GetComponent<Animator>().Play("Grab");
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Grab")) return;
+
+        animator.Play("Grab");
         StartCoroutine(grabRoutine());
         grabbing = true;
     }
@@ -162,11 +178,24 @@ public class PlayerBot : BotBehaviour {
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
         flying = true;
+        animator.Play("Flying");
     }
 
-    void stopJetpack() {
+    void stopJetpack(){
         rb.useGravity = true;
         flying = false;
+        animator.SetTrigger("stopflying");
+    }
+
+    void handleJetpack() {
+        if (flying) {
+                jetpackFly();
+            }
+        else {
+            if (jetpackFuel < FRAMES_JETPACK_FLY)
+                jetpackFuel++;
+            powerBar.value = jetpackFuel * 1F / FRAMES_JETPACK_FLY;
+        }
     }
 
     void jetpackFly() {
@@ -177,10 +206,40 @@ public class PlayerBot : BotBehaviour {
             jetpackFuel--;
             powerBar.value = jetpackFuel * 1F / FRAMES_JETPACK_FLY;
         }else {
-            // no more fuel... i guess...
+            // no more fuel... lets stop the jetpack.
             stopJetpack();
         }
     }
+    #endregion
+
+    #region shock
+    private void startShock() {
+        animator.Play("Zapping");
+        StartCoroutine(shockCoroutine());
+        shocking = true;
+    }
+
+    private void shock() {
+        EffectControl.createEffect(Effect.LIGHTNING_SHOCK, shootHandPoint.position + transform.right * -1F + transform.forward * -2F);
+        shocking = false;
+    }
+
+    private IEnumerator shockCoroutine() {
+        for (int i = 0; i < FRAMES_UNTIL_SHOCK; i++) {
+            powerBar.value = 1 - i * 1F / FRAMES_UNTIL_SHOCK;
+            yield return new WaitForEndOfFrame();
+        }
+
+        powerBar.value = 1;
+
+        shock();
+    }
+    #endregion
+
+    #region mini
+
+    //bla
+
     #endregion
 
     public void swapTypes(BotBehaviour otherBot) {
@@ -195,9 +254,11 @@ public class PlayerBot : BotBehaviour {
 
         //extra stuff
         switch (botType) {
-            case BotType.NORMAL: powerBarFill.color = Color.white; break;
-            case BotType.ROCKET: powerBarFill.color = new Color(1, 0.5F, 0); break;
-            case BotType.JETPACK: powerBarFill.color = Color.blue; break;
+            case BotType.NORMAL: powerBarFill.color = Color.white; sprType.sprite = typeSprites[0]; break;
+            case BotType.ROCKET: powerBarFill.color = new Color(1, 0.5F, 0); sprType.sprite = typeSprites[1]; break;
+            case BotType.JETPACK: powerBarFill.color = Color.blue; sprType.sprite = typeSprites[2]; break;
+            case BotType.SHOCK: powerBarFill.color = Color.yellow; sprType.sprite = typeSprites[3]; break;
+            case BotType.MINI: powerBarFill.color = Color.green; sprType.sprite = typeSprites[4]; break;
         }
     }
 

@@ -9,7 +9,6 @@ public class RPhysics : MonoBehaviour {
         if (!b || hit.distance >= speed * Time.deltaTime) {
             //Move the given transform to its desired location
             t.position += direction * speed * Time.deltaTime;
-            print(string.Format("RPhysics : Hit collider: {0}; Distance: {1}", hit.collider, hit.distance));
         }
         else if (hit.distance > 0) {
             //Clip the given transform to the wall

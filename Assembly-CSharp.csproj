@@ -49,14 +49,20 @@
      <Compile Include="Assets\Scripts\Bots\BotBehaviour.cs" />
      <Compile Include="Assets\Scripts\Bots\BotType.cs" />
      <Compile Include="Assets\Scripts\Bots\EnemyBot.cs" />
+     <Compile Include="Assets\Scripts\Bots\HelperBot.cs" />
      <Compile Include="Assets\Scripts\Bots\PlayerBot.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Custom\RPhysics.cs" />
+     <Compile Include="Assets\Scripts\EffectControl.cs" />
      <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
      <Compile Include="Assets\Scripts\Menu\MenuControl.cs" />
      <Compile Include="Assets\Scripts\Menu\MenuTitle.cs" />
+     <Compile Include="Assets\Scripts\TV.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Explode.cs" />
      <Compile Include="Assets\Scripts\Weapons\Rocket.cs" />
+     <Compile Include="Assets\Scripts\Weapons\WoodenFence.cs" />
+     <None Include="Assets\Extra Assets\Particlecollection_Free samples\Particlecollection Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>I:/Applications/UnityEditor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: 40572d850b1d59443933a98698d56552
+timeCreated: 1480534217
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Backbone
+    100004: //RootNode
+    100006: Camera
+    100008: Cube
+    100010: Headbone
+    100012: Headbone_end
+    100014: Lamp
+    100016: LeftArm
+    100018: LeftDown
+    100020: LeftDown_end
+    100022: LeftDownLeg
+    100024: LeftDownLeg_end
+    100026: LeftThigh
+    100028: LeftUp
+    100030: LeftUpLeg
+    100032: Rdown
+    100034: Rdown_end
+    100036: RightArm
+    100038: RightDownLeg
+    100040: RightDownLeg_end
+    100042: RightThigh
+    100044: RightUpLeg
+    100046: Rup
+    100048: Sspine
+    400000: Armature
+    400002: Backbone
+    400004: //RootNode
+    400006: Camera
+    400008: Cube
+    400010: Headbone
+    400012: Headbone_end
+    400014: Lamp
+    400016: LeftArm
+    400018: LeftDown
+    400020: LeftDown_end
+    400022: LeftDownLeg
+    400024: LeftDownLeg_end
+    400026: LeftThigh
+    400028: LeftUp
+    400030: LeftUpLeg
+    400032: Rdown
+    400034: Rdown_end
+    400036: RightArm
+    400038: RightDownLeg
+    400040: RightDownLeg_end
+    400042: RightThigh
+    400044: RightUpLeg
+    400046: Rup
+    400048: Sspine
+    4300000: Cube
+    7400000: Boxor_RUN
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Boxor_RUN
+      takeName: Armature|ArmatureAction
+      firstFrame: 10
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Backbone
+        weight: 1
+      - path: Armature/Backbone/Sspine
+        weight: 1
+      - path: Armature/Backbone/Sspine/Headbone
+        weight: 1
+      - path: Armature/Backbone/Sspine/Headbone/Headbone_end
+        weight: 1
+      - path: Armature/Backbone/Sspine/LeftArm
+        weight: 1
+      - path: Armature/Backbone/Sspine/LeftArm/LeftUp
+        weight: 1
+      - path: Armature/Backbone/Sspine/LeftArm/LeftUp/LeftDown
+        weight: 1
+      - path: Armature/Backbone/Sspine/LeftArm/LeftUp/LeftDown/LeftDown_end
+        weight: 1
+      - path: Armature/Backbone/Sspine/RightArm
+        weight: 1
+      - path: Armature/Backbone/Sspine/RightArm/Rup
+        weight: 1
+      - path: Armature/Backbone/Sspine/RightArm/Rup/Rdown
+        weight: 1
+      - path: Armature/Backbone/Sspine/RightArm/Rup/Rdown/Rdown_end
+        weight: 1
+      - path: Armature/LeftThigh
+        weight: 1
+      - path: Armature/LeftThigh/LeftUpLeg
+        weight: 1
+      - path: Armature/LeftThigh/LeftUpLeg/LeftDownLeg
+        weight: 1
+      - path: Armature/LeftThigh/LeftUpLeg/LeftDownLeg/LeftDownLeg_end
+        weight: 1
+      - path: Armature/RightThigh
+        weight: 1
+      - path: Armature/RightThigh/RightUpLeg
+        weight: 1
+      - path: Armature/RightThigh/RightUpLeg/RightDownLeg
+        weight: 1
+      - path: Armature/RightThigh/RightUpLeg/RightDownLeg/RightDownLeg_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Lamp
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -75,9 +75,11 @@
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuControl.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuTitle.cs" />
+    <Compile Include="Assets\Scripts\TV.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Explode.cs" />
     <Compile Include="Assets\Scripts\Weapons\Rocket.cs" />
-    <Compile Include="Assets\Scripts\Weapons\RocketButton.cs" />
+    <Compile Include="Assets\Scripts\Weapons\WoodenFence.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extra Assets\Particlecollection_Free samples\Particlecollection Readme.txt" />

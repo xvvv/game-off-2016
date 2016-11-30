@@ -2,8 +2,9 @@
 
 public class EffectControl : MonoBehaviour {
 
-    public GameObject explosion_blue, explosion_gray, explosion_orange;  // Explosions
+    public GameObject explosion_blue, explosion_gray, explosion_orange, explosion_yellow, explosion_green;  // Explosions
     public GameObject firespray_finish; // Sprays
+    public GameObject lightning_Shock;
 
     public static EffectControl instance;
 
@@ -31,10 +32,20 @@ public class EffectControl : MonoBehaviour {
         case Effect.EXPLOSION_ORANGE:
             g = spawnEffectGO(instance.explosion_orange);
             break;
-        case Effect.FIRESPRAY_FINISH:
+            case Effect.EXPLOSION_YELLOW:
+                g = spawnEffectGO(instance.explosion_yellow);
+                break;
+            case Effect.EXPLOSION_GREEN:
+                g = spawnEffectGO(instance.explosion_green);
+                break;
+            case Effect.FIRESPRAY_FINISH:
             g = spawnEffectGO(instance.firespray_finish);
             break;
-        default:
+        case Effect.LIGHTNING_SHOCK:
+            g = spawnEffectGO(instance.lightning_Shock);
+                g.transform.eulerAngles = PlayerBot.localPlayerBot.transform.eulerAngles - Vector3.up * 90 - Vector3.left * 90;
+            break;
+            default:
             g = spawnEffectGO(instance.explosion_blue);
             break;
         }
@@ -64,5 +75,8 @@ public enum Effect {
     EXPLOSION_BLUE = 0,
     EXPLOSION_GRAY,
     EXPLOSION_ORANGE,
-    FIRESPRAY_FINISH
+    EXPLOSION_YELLOW,
+    EXPLOSION_GREEN,
+    FIRESPRAY_FINISH,
+    LIGHTNING_SHOCK
 }

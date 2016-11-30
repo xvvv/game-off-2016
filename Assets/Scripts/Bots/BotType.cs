@@ -2,5 +2,6 @@
     NORMAL,
     ROCKET,
     JETPACK,
-    NEEDMORE
+    SHOCK,
+    MINI
 }
